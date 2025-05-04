@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Analisis Sentimen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Analisis Sentimen</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#sentiment">Sentiment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#statistic">Statistic</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Konten -->
+    <div class="container py-5">
+        <!-- Sentiment Form -->
+        <section id="sentiment" class="mb-5">
+            <h2 class="text-center mb-4">🔍 Analisis Sentimen</h2>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form method="POST" action="/">
+                        <div class="mb-3">
+                            <label for="komentar" class="form-label">Masukkan komentar:</label>
+                            <textarea class="form-control" id="komentar" name="komentar" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Prediksi</button>
+                    </form>
+                </div>
+            </div>
+            {% if prediction %}
+            <div class="alert alert-info text-center mt-4" role="alert">
+                Hasil Sentimen: <strong>{{ prediction }}</strong>
+            </div>
+            {% endif %}
+        </section>
+
+        <!-- Statistik -->
+        <section id="statistic">
+            <h2 class="text-center mb-4 pt-8">📈 Statistik Sentimen</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header text-center fw-bold">Sebaran Sentimen</div>
+                        <img src="{{ url_for('static', filename='sentiment_distribution.png') }}" class="card-img-top" alt="Sebaran">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header text-center fw-bold">WordCloud</div>
+                        <img src="{{ url_for('static', filename='wordcloud.png') }}" class="card-img-top" alt="WordCloud">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header text-center fw-bold">Confusion Matrix</div>
+                        <img src="{{ url_for('static', filename='confusion_matrix.png') }}" class="card-img-top" alt="Confusion Matrix">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

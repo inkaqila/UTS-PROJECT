@@ -1,0 +1,61 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistik Sentimen</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="/">Analisis Sentimen</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Sentiment</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/statistic">Statistic</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Statistik Content -->
+    <div class="container">
+        <div class="row g-4">
+            <!-- WordCloud -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">WordCloud</div>
+                    <div class="card-body text-center">
+                        <img src="{{ url_for('static', filename='wordcloud.png') }}" class="img-fluid stat-img" alt="WordCloud">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Distribusi Sentimen -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">Sebaran Sentimen</div>
+                    <div class="card-body text-center">
+                        <img src="{{ url_for('static', filename='sentiment_distribution.png') }}" class="img-fluid stat-img" alt="Distribusi Sentimen">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confusion Matrix -->
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-danger text-white">Confusion Matrix</div>
+                    <div class="card-body text-center">
+                        <img src="{{ url_for('static', filename='confusion_matrix.png') }}" class="img-fluid stat-img" alt="Confusion Matrix">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
