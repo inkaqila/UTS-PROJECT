@@ -6,3 +6,4 @@ pandas
 numpy
 seaborn
 Jinja2
+tensorflow
